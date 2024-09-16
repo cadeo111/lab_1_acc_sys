@@ -21,18 +21,41 @@
 
 
 module lab1(
-    input kb_clk,
-    input kb_data,
-    input reset,
-    input clk,
-    output [7:0] display_0
+    input wire kb_clk,
+    input wire kb_data,
+    input wire reset,
+    input wire clk,
+    output wire [7:0] display_0
     );
     
-    reg kb_negedge_o;
+    wire kb_negedge_o;
+    wire char_0;
+    wire valid_1_o;
     
-    always @ (posedge kb_clk) begin
-        kb_negedge_o = 1;
-    end //always
-        
+    kb_sync sync_inst (
+    .clk(clk),
+    .kb_clk(kb_clk),
+    .reset(reset),
+    .kb_negedge_o(kb_negedge_o)
+    );
+
+    // Instantiate S2P
+    S2P s2p_inst (
+        .clk(clk),
+        .reset(reset),
+        .kb_negedge_o(kb_negedge_o),
+        .kb_data(kb_data),
+        .char_o(char_o),
+        .valid_o(valid_o)
+    );
+    
+    // Instantiate Display-
+    Display display_inst (
+        .clk(clk),
+        .reset(reset),
+        .valid_o(valid_o),
+        .char_o(char_o),
+        .display_o(display_o)
+    );
 
 endmodule // lab1
