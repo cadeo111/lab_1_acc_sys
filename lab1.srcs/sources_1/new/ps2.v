@@ -21,10 +21,10 @@
 
 
 module lab1(
+    input wire clk,
+    input wire reset,
     input wire kb_clk,
     input wire kb_data,
-    input wire reset,
-    input wire clk,
     output wire [7:0] display_o
     );
     

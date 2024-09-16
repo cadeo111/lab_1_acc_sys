@@ -9,7 +9,7 @@ reg previous_value; // probably local variabel?
 
 // Detect falling edge of kb_clk
 always @(posedge clk or posedge reset) begin
-    if (reset) begin
+    if (!reset) begin
         previous_value <= 1'b1;
         kb_negedge_o <= 1'b0;
     end else begin
