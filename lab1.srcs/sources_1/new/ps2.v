@@ -29,7 +29,7 @@ module lab1(
     );
     
     wire kb_negedge_o;
-    wire char_0;
+    wire  [7:0] char_0;
     wire valid_1_o;
     
     kb_sync sync_inst (
