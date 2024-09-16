@@ -25,7 +25,7 @@ module lab1(
     input wire kb_data,
     input wire reset,
     input wire clk,
-    output wire [7:0] display_0
+    output wire [7:0] display_o
     );
     
     wire kb_negedge_o;
@@ -49,7 +49,7 @@ module lab1(
         .valid_o(valid_o)
     );
     
-    // Instantiate Display-
+    // Instantiate Display
     Display display_inst (
         .clk(clk),
         .reset(reset),

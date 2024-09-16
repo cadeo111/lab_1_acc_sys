@@ -5,8 +5,7 @@ module kb_sync(
     output reg kb_negedge_o
     );
     
-    
-reg previous_value;
+reg previous_value; // probably local variabel?
 
 // Detect falling edge of kb_clk
 always @(posedge clk or posedge reset) begin
